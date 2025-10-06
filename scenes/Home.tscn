@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://pjpqanbgxsup"]
+
+[ext_resource type="Script" uid="uid://bjrlgmn5yrkdn" path="res://scripts/Home.gd" id="1_d52sk"]
+[ext_resource type="AudioStream" uid="uid://cq43cmp6tj060" path="res://assests/music/click.mp3" id="2_nqr1n"]
+[ext_resource type="Texture2D" uid="uid://g3prpq85dox1" path="res://assests/image/main_menu_picture.jpg" id="2_svoro"]
+[ext_resource type="FontFile" uid="uid://m6temv8nflwe" path="res://assests/font/WDB_Bangna.ttf" id="3_72wqp"]
+[ext_resource type="AudioStream" uid="uid://cf4hh2c6d16q5" path="res://assests/music/main_menu.mp3" id="5_72wqp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svoro"]
+bg_color = Color(0, 0, 0, 0.6)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72wqp"]
+bg_color = Color(0, 0, 0, 0.6156863)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.6156863)
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d52sk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_svoro")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Panel" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -214.0
+offset_right = 126.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_72wqp")
+theme_override_font_sizes/font_size = 65
+text = "Soul Lite"
+horizontal_alignment = 1
+
+[node name="space" type="Label" parent="Panel"]
+layout_mode = 2
+
+[node name="Startgame" type="Button" parent="Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_72wqp")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_svoro")
+text = "Start Game
+"
+
+[node name="tutorial" type="Button" parent="Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_72wqp")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_72wqp")
+text = "Tutorial"
+
+[node name="Exitgame" type="Button" parent="Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_72wqp")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_svoro")
+text = "Exit Game
+"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nqr1n")
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_72wqp")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="pressed" from="Panel/Startgame" to="." method="_on_startgame_pressed"]
+[connection signal="pressed" from="Panel/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Panel/Exitgame" to="." method="_on_exitgame_pressed"]

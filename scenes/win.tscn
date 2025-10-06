@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://bemgnassuwp3m"]
+
+[ext_resource type="Script" uid="uid://bt88u3tbpo28b" path="res://scripts/game_over.gd" id="1_npq8u"]
+[ext_resource type="Texture2D" uid="uid://b3e53p48s1rui" path="res://assests/image/win_pic.jpeg" id="2_oa208"]
+[ext_resource type="FontFile" uid="uid://m6temv8nflwe" path="res://assests/font/WDB_Bangna.ttf" id="3_njgub"]
+[ext_resource type="AudioStream" uid="uid://cq43cmp6tj060" path="res://assests/music/click.mp3" id="4_hev8b"]
+[ext_resource type="AudioStream" uid="uid://drmh3mr4ff3wi" path="res://assests/music/victory_sound.mp3" id="5_gspil"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tylv2"]
+bg_color = Color(0, 0, 0, 0.6901961)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.6901961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vxan"]
+bg_color = Color(0, 0, 0, 0.6901961)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.6901961)
+
+[node name="win" type="CanvasLayer"]
+script = ExtResource("1_npq8u")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oa208")
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.49019608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -230.5
+offset_right = 150.0
+offset_bottom = 230.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_njgub")
+theme_override_font_sizes/font_size = 64
+text = "You Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+
+[node name="btn_home" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.8207444, 0.7742126, 1.1551381e-06, 1)
+theme_override_colors/icon_pressed_color = Color(0.68654203, 0.6466425, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.903869, 0.85227567, 0, 1)
+theme_override_fonts/font = ExtResource("3_njgub")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_tylv2")
+text = "Return To Home"
+
+[node name="btn_exit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1.92523e-06, 0.81831527, 0.8183154, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.74339545, 0.7433953, 1)
+theme_override_colors/icon_hover_color = Color(0.07334899, 0.99999994, 0.99985605, 1)
+theme_override_fonts/font = ExtResource("3_njgub")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_5vxan")
+text = "Exit Game
+"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hev8b")
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gspil")
+volume_db = -6.0
+autoplay = true
+
+[connection signal="pressed" from="Control/VBoxContainer/btn_home" to="." method="_on_btn_home_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

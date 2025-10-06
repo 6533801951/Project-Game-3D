@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfjfsw8q6a551"]
+
+[ext_resource type="Script" uid="uid://bjyi6fdprc6xt" path="res://scripts/ui.gd" id="1_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://cgoy6lqa7s4pi" path="res://assests/UI/Ind_Center_backplate.png" id="1_cgfq5"]
+[ext_resource type="Texture2D" uid="uid://pmlyx2ojsik3" path="res://assests/UI/Ind_Health_backplate.png" id="2_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://b8eptut4svs3c" path="res://assests/UI/Ind_Mana_backplate.png" id="3_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://dh8pkw8sloxex" path="res://assests/UI/Ind_Health_left.png" id="4_6rmj2"]
+[ext_resource type="Texture2D" uid="uid://rycjwr6vcrh1" path="res://assests/UI/Ind_Health_right.png" id="5_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://d18ccuu63llsg" path="res://assests/UI/Ind_Mana_left.png" id="6_qsv74"]
+[ext_resource type="Texture2D" uid="uid://ctp0751onw6k0" path="res://assests/UI/Ind_Mana_right.png" id="7_h1mc3"]
+[ext_resource type="Texture2D" uid="uid://i8x4q66vjuio" path="res://assests/UI/Ind_Center_top.png" id="8_cof4p"]
+[ext_resource type="FontFile" uid="uid://m6temv8nflwe" path="res://assests/font/WDB_Bangna.ttf" id="9_f7tlh"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_7dvkv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_top = 16.0
+offset_right = -9.0
+offset_bottom = 16.0
+
+[node name="background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 552.0
+offset_top = 578.0
+offset_right = 660.0
+offset_bottom = 689.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_cgfq5")
+
+[node name="Hp background" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 621.0
+offset_right = 868.0
+offset_bottom = 644.0
+texture = ExtResource("2_7dvkv")
+
+[node name="Stamina background" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 644.0
+offset_right = 844.0
+offset_bottom = 667.0
+texture = ExtResource("3_vdcm2")
+
+[node name="HpBar1" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 584.0
+offset_right = 606.0
+offset_bottom = 641.0
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("4_6rmj2")
+
+[node name="HpBar2" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 584.0
+offset_right = 862.0
+offset_bottom = 641.0
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("5_vsj0x")
+
+[node name="StaminaBar1" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 645.0
+offset_right = 605.0
+offset_bottom = 683.0
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("6_qsv74")
+
+[node name="StaminaBar2" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 645.0
+offset_right = 837.0
+offset_bottom = 683.0
+max_value = 50.0
+value = 50.0
+texture_progress = ExtResource("7_h1mc3")
+
+[node name="ItemUI" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 720.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/ItemUI"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 595.0
+offset_right = 647.0
+offset_bottom = 676.0
+texture = ExtResource("8_cof4p")
+
+[node name="count" type="Label" parent="Control/ItemUI"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 614.0
+offset_right = 625.0
+offset_bottom = 672.0
+theme_override_fonts/font = ExtResource("9_f7tlh")
+theme_override_font_sizes/font_size = 60
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossHealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.5259075, 0.46041763, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 35.0
+offset_right = 275.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_f7tlh")
+theme_override_font_sizes/font_size = 30
+value = 100.0

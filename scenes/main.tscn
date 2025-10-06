@@ -1,0 +1,444 @@
+[gd_scene load_steps=13 format=3 uid="uid://ccx1s8fa3eki2"]
+
+[ext_resource type="Texture2D" uid="uid://c8f0cq0rm5co6" path="res://assests/textures/Dark/texture_12.png" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dxg6vahyy6bhd" path="res://assests/model_world/walls/GLB/wall.tscn" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dnj1c4tbqmjkr" path="res://assests/model_world/walls/GLB/wall_02.tscn" id="3_tipki"]
+[ext_resource type="PackedScene" uid="uid://byo8tcmgnn1sp" path="res://assests/model_world/walls/GLB/walldoor.tscn" id="4_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bgpb2l7gg3cuy" path="res://scenes/player.tscn" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bfjfsw8q6a551" path="res://scenes/ui.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c027aypb3fvet" path="res://scenes/boss.tscn" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://cyeixpbjq2olh" path="res://assests/music/classroom_song.mp3" id="8_tipki"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4mrxx"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7r4gi"]
+sky_material = SubResource("ProceduralSkyMaterial_4mrxx")
+
+[sub_resource type="Environment" id="Environment_w7kh3"]
+background_mode = 2
+sky = SubResource("Sky_7r4gi")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_density = 0.001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3hyu"]
+albedo_color = Color(1, 0.87230307, 0.77962285, 1)
+albedo_texture = ExtResource("1_85g3d")
+uv1_triplanar = true
+
+[node name="world" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w7kh3")
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="floor" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_e3hyu")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="wall" parent="map" instance=ExtResource("2_tefeu")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -0.10506153, 2.3841858e-07, 3.0161653)
+
+[node name="wall1" parent="map" instance=ExtResource("2_tefeu")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -3.1050615, 2.3841858e-07, 3.0161653)
+
+[node name="wall2" parent="map" instance=ExtResource("2_tefeu")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 2.8949385, 2.3841858e-07, 3.0161653)
+
+[node name="wall02" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, 1.8371674)
+
+[node name="wall03" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -1.1628326)
+
+[node name="wall04" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -4.1628327)
+
+[node name="wall05" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -7.1628327)
+
+[node name="wall06" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -10.162832)
+
+[node name="wall07" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -13.162832)
+
+[node name="wall08" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, -4.734803, 0, -15.884234)
+
+[node name="wall11" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, 1.8371677)
+
+[node name="wall12" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -1.1628323)
+
+[node name="wall13" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -4.1628323)
+
+[node name="wall14" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -7.162834)
+
+[node name="wall15" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -10.162834)
+
+[node name="wall16" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -13.162834)
+
+[node name="wall17" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 4.265197, 0, -15.873861)
+
+[node name="wall20" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 2.7356248, 0, -17.495644)
+
+[node name="wall22" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 5.735625, 0, -17.495644)
+
+[node name="wall23" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 8.735624, 0, -17.495644)
+
+[node name="wall24" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 11.735624, 0, -17.495644)
+
+[node name="wall25" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 14.735624, 0, -17.495644)
+
+[node name="wall26" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 17.735624, 0, -17.495644)
+
+[node name="wall27" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 20.735624, 0, -17.495644)
+
+[node name="wall28" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 23.735624, 0, -17.495644)
+
+[node name="wall29" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 26.735624, 0, -17.495644)
+
+[node name="wall30" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 29.735624, 0, -17.495644)
+
+[node name="wall31" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 32.735626, 0, -17.495644)
+
+[node name="wall32" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 35.735626, 0, -17.495644)
+
+[node name="wall33" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 38.735626, 0, -17.495644)
+
+[node name="wall34" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -18.495644)
+
+[node name="wall35" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -21.495644)
+
+[node name="wall36" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -24.495644)
+
+[node name="wall37" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -27.495644)
+
+[node name="wall38" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -30.495644)
+
+[node name="wall39" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -33.495644)
+
+[node name="wall40" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -36.495644)
+
+[node name="wall41" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -39.495644)
+
+[node name="wall42" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -42.495644)
+
+[node name="wall43" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -45.495644)
+
+[node name="wall44" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -48.495644)
+
+[node name="wall45" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -51.495644)
+
+[node name="wall46" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -54.495644)
+
+[node name="wall47" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -57.495644)
+
+[node name="wall48" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -60.495644)
+
+[node name="wall49" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -63.495644)
+
+[node name="wall50" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -66.49564)
+
+[node name="wall21" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -3.2978013, 0, -17.495644)
+
+[node name="wall51" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -69.49564)
+
+[node name="wall52" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -72.49564)
+
+[node name="wall53" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -75.49564)
+
+[node name="wall54" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -78.49564)
+
+[node name="wall55" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -81.49564)
+
+[node name="wall56" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -84.49564)
+
+[node name="wall58" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -87.49564)
+
+[node name="wall59" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -90.49564)
+
+[node name="wall60" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -93.49564)
+
+[node name="wall62" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -96.49564)
+
+[node name="wall63" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-6.9938224e-08, 0, 1.6, 0, 1.6, 0, -1.6, 0, -6.9938224e-08, 39.735626, 0, -99.49564)
+
+[node name="wall64" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 38.735626, 0, -99.49564)
+
+[node name="wall65" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 35.735626, 0, -99.49564)
+
+[node name="wall66" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 32.735626, 0, -99.49564)
+
+[node name="wall67" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 29.735626, 0, -99.49564)
+
+[node name="wall68" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 26.735626, 0, -99.49564)
+
+[node name="wall69" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 23.735626, 0, -99.49564)
+
+[node name="wall70" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 20.735626, 0, -99.49564)
+
+[node name="wall71" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 17.735626, 0, -99.49564)
+
+[node name="wall72" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 14.735626, 0, -99.49564)
+
+[node name="wall73" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 11.735626, 0, -99.49564)
+
+[node name="wall74" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 8.735626, 0, -99.49564)
+
+[node name="wall75" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 5.735626, 0, -99.49564)
+
+[node name="wall76" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, 2.7356262, 0, -99.49564)
+
+[node name="wall77" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -0.26437378, 0, -99.49564)
+
+[node name="wall78" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -3.2643738, 0, -99.49564)
+
+[node name="wall79" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -6.264374, 0, -99.49564)
+
+[node name="wall80" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -9.264374, 0, -99.49564)
+
+[node name="wall81" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -12.264374, 0, -99.49564)
+
+[node name="wall82" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -15.264374, 0, -99.49564)
+
+[node name="wall83" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -18.264374, 0, -99.49564)
+
+[node name="wall84" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -21.264374, 0, -99.49564)
+
+[node name="wall85" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -24.264374, 0, -99.49564)
+
+[node name="wall86" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -27.264374, 0, -99.49564)
+
+[node name="wall87" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -30.264374, 0, -99.49564)
+
+[node name="wall88" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -33.264374, 0, -99.49564)
+
+[node name="wall89" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -36.264374, 0, -99.49564)
+
+[node name="wall90" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -39.264374, 0, -99.49564)
+
+[node name="wall91" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -98.49564)
+
+[node name="wall92" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -95.49564)
+
+[node name="wall93" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -92.49564)
+
+[node name="wall94" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -89.49564)
+
+[node name="wall95" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -86.49564)
+
+[node name="wall96" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -83.49564)
+
+[node name="wall97" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -80.49564)
+
+[node name="wall98" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -77.49564)
+
+[node name="wall99" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -74.49564)
+
+[node name="wall100" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -71.49564)
+
+[node name="wall101" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -68.49564)
+
+[node name="wall102" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -65.49564)
+
+[node name="wall103" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -62.495644)
+
+[node name="wall104" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -59.495644)
+
+[node name="wall105" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -56.495644)
+
+[node name="wall106" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -53.495644)
+
+[node name="wall107" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -50.495644)
+
+[node name="wall108" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -47.495644)
+
+[node name="wall109" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -44.495644)
+
+[node name="wall110" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -41.495644)
+
+[node name="wall111" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -38.495644)
+
+[node name="wall112" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -35.495644)
+
+[node name="wall113" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -32.495644)
+
+[node name="wall114" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -29.495644)
+
+[node name="wall115" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -26.495644)
+
+[node name="wall116" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -23.495644)
+
+[node name="wall117" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -20.495644)
+
+[node name="wall118" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(2.0981467e-07, 0, -1.6, 0, 1.6, 0, 1.6, 0, 2.0981467e-07, -39.264374, 0, -17.495644)
+
+[node name="wall119" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -27.3877, 0, -17.491299)
+
+[node name="wall120" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -30.3877, 0, -17.491299)
+
+[node name="wall121" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -33.3877, 0, -17.491299)
+
+[node name="wall122" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -36.3877, 0, -17.491299)
+
+[node name="wall127" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -39.3877, 0, -17.491299)
+
+[node name="wall123" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -15.387699, 0, -17.491299)
+
+[node name="wall124" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -18.3877, 0, -17.491299)
+
+[node name="wall125" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -21.3877, 0, -17.491299)
+
+[node name="wall126" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -24.3877, 0, -17.491299)
+
+[node name="wall128" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -6.387699, 0, -17.491299)
+
+[node name="wall129" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -9.387699, 0, -17.491299)
+
+[node name="wall130" parent="map" instance=ExtResource("3_tipki")]
+transform = Transform3D(-1.6, 0, -1.3987645e-07, 0, 1.6, 0, 1.3987645e-07, 0, -1.6, -12.387699, 0, -17.491299)
+
+[node name="walldoor_0012" parent="map" instance=ExtResource("4_85g3d")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -0.15926218, 1.6000097, -17.498947)
+
+[node name="player" parent="." instance=ExtResource("5_85g3d")]
+sens_horizontal = 0.2
+sens_vertical = 0.2
+
+[node name="UI" parent="." instance=ExtResource("6_tefeu")]
+
+[node name="Boss" parent="." instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007, 0.001, -60)
+
+[node name="map_song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tipki")
+volume_db = -10.0
+autoplay = true

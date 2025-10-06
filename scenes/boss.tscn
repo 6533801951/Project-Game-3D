@@ -1,0 +1,210 @@
+[gd_scene load_steps=22 format=3 uid="uid://c027aypb3fvet"]
+
+[ext_resource type="Script" uid="uid://cfk5gpkfvaxp1" path="res://scripts/boss.gd" id="1_kjnbh"]
+[ext_resource type="PackedScene" uid="uid://dlaoeooln7vjr" path="res://assests/model/enemy.tscn" id="1_qja5f"]
+[ext_resource type="AudioStream" uid="uid://dsbvisfhh28gd" path="res://assests/music/boss_fight_song.mp3" id="4_2avx2"]
+[ext_resource type="PackedScene" uid="uid://bb85ymcilf13y" path="res://scenes/bullet.tscn" id="4_qnbj4"]
+[ext_resource type="AudioStream" uid="uid://dc1lurio0ej38" path="res://assests/music/boss_hurt.mp3" id="5_5f346"]
+[ext_resource type="AudioStream" uid="uid://c3ojfcn70jerd" path="res://assests/music/explosion1.mp3" id="6_0onds"]
+[ext_resource type="AudioStream" uid="uid://bg1ulprkjw3ji" path="res://assests/music/explosion2.mp3" id="7_lfs1x"]
+[ext_resource type="AudioStream" uid="uid://ct1uqtsbl2cao" path="res://assests/music/gun_pointing.mp3" id="8_8eiau"]
+[ext_resource type="AudioStream" uid="uid://dih6cwj4akttt" path="res://assests/music/gun_shooting.mp3" id="9_vn2fc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kw6yw"]
+radius = 0.3828125
+height = 1.8096924
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kw6yw"]
+radius = 40.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6pkbh"]
+radius = 1.475
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jncid"]
+size = Vector3(0.5981598, 1.7094727, 0.2876587)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnbj4"]
+size = Vector3(0.8244705, 1.7094727, 0.13306427)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jncid"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_jncid"]
+offsets = PackedFloat32Array(0, 0.509901, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.9254902, 0, 1, 0, 0, 0, 0.77254903)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qnbj4"]
+gradient = SubResource("Gradient_jncid")
+
+[sub_resource type="Curve" id="Curve_r3bxh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0.8), -7.6541505, -7.6541505, 0, 0, Vector2(0.6, 0.3), 6.6937313, 6.6937313, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_wqpjq"]
+curve = SubResource("Curve_r3bxh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2cdgk"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+damping_min = 0.2
+damping_max = 0.2
+scale_curve = SubResource("CurveTexture_wqpjq")
+color_ramp = SubResource("GradientTexture1D_qnbj4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qsl3t"]
+
+[node name="Boss" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_kjnbh")
+bullet_scene = ExtResource("4_qnbj4")
+
+[node name="enemy" parent="." instance=ExtResource("1_qja5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06672859, 0, 0.026874304)
+
+[node name="Skeleton3D" parent="enemy/RootNode/CharacterArmature" index="0"]
+bones/7/rotation = Quaternion(-0.034050133, -0.10321858, -0.02647362, 0.9937232)
+bones/8/position = Vector3(0.0009873543, 0.00029017703, 0.00021275686)
+bones/8/rotation = Quaternion(0.4561994, 0.8402314, 0.106907114, -0.27288124)
+bones/9/rotation = Quaternion(0.6036735, -0.1578793, 0.09795876, -0.7752784)
+bones/31/rotation = Quaternion(-0.45619926, 0.8402316, 0.10690755, 0.27288067)
+bones/33/rotation = Quaternion(-0.35484877, 0.09176186, 0.6640384, 0.6517017)
+bones/54/rotation = Quaternion(-0.6355626, 0.032126106, 0.75709796, -0.1477527)
+bones/56/rotation = Quaternion(0.62300086, 0.14116131, 0.7395593, 0.2121217)
+
+[node name="Head" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="0"]
+transform = Transform3D(0.95488006, 0.15291731, 0.2545977, 0.272193, -0.10767689, -0.95619893, -0.118805096, 0.9823553, -0.1444416, 0.00090924255, -0.000855891, 0.015038738)
+
+[node name="Index4_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="1"]
+transform = Transform3D(-0.7843009, 0.42752674, 0.4495464, 0.35943332, -0.27747002, 0.8909644, 0.50564706, 0.8603663, 0.06395301, 0.0017206786, -0.0023747692, 0.014458876)
+
+[node name="Middle4_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.576743, 0.32729068, 0.74849707, 0.6286369, -0.4073257, 0.66249585, 0.5217109, 0.8526231, 0.029175341, 0.0018667537, -0.0024783628, 0.014303321)
+
+[node name="Ring4_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="3"]
+transform = Transform3D(-0.78327495, 0.6216308, -0.0074115247, -0.16413686, -0.19528922, 0.9669131, 0.5996156, 0.75857544, 0.25499776, 0.0019482833, -0.002665747, 0.014203234)
+
+[node name="Pinky4_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="4"]
+transform = Transform3D(-0.5527582, 0.66178244, 0.5064601, 0.56397974, -0.15034302, 0.8119874, 0.6135017, 0.7344661, -0.2901284, 0.0021229829, -0.0028466908, 0.014112312)
+
+[node name="Thumb3_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="5"]
+transform = Transform3D(-0.9725919, -0.12732697, 0.19455571, 0.17416966, -0.95328426, 0.24680659, 0.15404175, 0.2739277, 0.94933355, 0.0016254978, -0.0021915778, 0.014725512)
+
+[node name="Index4_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="6"]
+transform = Transform3D(-0.21996471, -0.4140608, -0.883271, -0.13614082, -0.8835566, 0.44809827, -0.9659608, 0.21881533, 0.13798104, 0.0010970733, -0.004876786, 0.013234753)
+
+[node name="gun" parent="enemy/RootNode/CharacterArmature/Skeleton3D/Index4_R" index="1"]
+transform = Transform3D(0.00044185712, -0.0019005154, 0.00043909837, 0.0018881205, 0.0003037031, -0.00058547873, 0.00048967917, 0.00054388307, 0.0018612915, 0.00014491403, -0.0005404921, -0.0004126237)
+
+[node name="Middle4_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="7"]
+transform = Transform3D(0.099484906, -0.25988346, -0.9605013, -0.25338882, -0.94008374, 0.22811353, -0.9622348, 0.22068676, -0.15937574, 0.0010963449, -0.004886876, 0.012997764)
+
+[node name="Ring4_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="8"]
+transform = Transform3D(-0.5013491, -0.57702535, -0.6447403, 0.28943074, -0.81406903, 0.5035088, -0.8154007, 0.06582624, 0.5751417, 0.0011767715, -0.0049735503, 0.01280335)
+
+[node name="Pinky4_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="9"]
+transform = Transform3D(0.10672533, -0.6263881, -0.7721703, -0.14094132, -0.7782948, 0.6118759, -0.9842482, 0.04352819, -0.17134778, 0.0011810559, -0.005088206, 0.0125617655)
+
+[node name="Thumb3_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="10"]
+transform = Transform3D(-0.5764203, 0.5777804, -0.57784796, -0.2939963, -0.80642956, -0.5130657, -0.7624334, -0.12585627, 0.63470846, 0.000979111, -0.004899526, 0.013549843)
+
+[node name="LowerLeg_L" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="11"]
+transform = Transform3D(0.6454667, -0.25797766, -0.71888626, 0.7520328, 0.37893873, 0.5392784, 0.1332886, -0.88873583, 0.43861163, 0.0025244786, -1.8455816e-05, 0.0047698724)
+
+[node name="LowerLeg_R" parent="enemy/RootNode/CharacterArmature/Skeleton3D" index="12"]
+transform = Transform3D(0.88505125, -0.16738684, -0.43430862, 0.46192, 0.20141537, 0.86374176, -0.057101037, -0.9650973, 0.2555888, 0.00017045904, -0.0031702034, 0.005160231)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038885355, 0.90460205, 0)
+shape = SubResource("CapsuleShape3D_kw6yw")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_kw6yw")
+
+[node name="AttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62888706, 0)
+shape = SubResource("SphereShape3D_6pkbh")
+
+[node name="KickHitbox" type="Area3D" parent="." groups=["enemy_hitbox"]]
+collision_layer = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KickHitbox"]
+transform = Transform3D(1, 0, 0, 0, 0.9999887, 0.0047647306, 0, -0.0047647306, 0.9999887, 0.08872223, 0.90557826, 0.4400649)
+shape = SubResource("BoxShape3D_jncid")
+
+[node name="PunchHitbox" type="Area3D" parent="." groups=["enemy_hitbox"]]
+collision_layer = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PunchHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1265983, 0.86321676, -0.08939415)
+shape = SubResource("BoxShape3D_qnbj4")
+
+[node name="GunMuzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3650926, 0.66189027)
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="ShockwaveExplosion" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_jncid")
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2cdgk")
+draw_pass_1 = SubResource("QuadMesh_qsl3t")
+
+[node name="MeleeHitEffect" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2905042, 1.5486584)
+material_override = SubResource("StandardMaterial3D_jncid")
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2cdgk")
+draw_pass_1 = SubResource("QuadMesh_qsl3t")
+
+[node name="BossFightSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2avx2")
+volume_db = -10.0
+
+[node name="BossHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5f346")
+volume_db = -5.0
+
+[node name="Explosion1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0onds")
+volume_db = -4.0
+
+[node name="Explosion2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lfs1x")
+volume_db = -6.87
+
+[node name="GunPointing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8eiau")
+
+[node name="GunShooting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_vn2fc")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="body_entered" from="KickHitbox" to="." method="_on_kick_hitbox_body_entered"]
+[connection signal="body_entered" from="PunchHitbox" to="." method="_on_punch_hitbox_body_entered"]
+
+[editable path="enemy"]

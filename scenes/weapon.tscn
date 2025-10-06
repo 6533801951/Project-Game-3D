@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5hybf4p5mmp6"]
+
+[ext_resource type="Script" uid="uid://b5k3p1bq3qhli" path="res://scripts/weapon.gd" id="1_uxn4k"]
+[ext_resource type="PackedScene" uid="uid://cxwtp5nwdrj6f" path="res://assests/model/sword.tscn" id="1_xasec"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bmw2d"]
+size = Vector3(0.48069763, 1.6387024, 0.26474)
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_uxn4k")
+
+[node name="Sword" parent="." instance=ExtResource("1_xasec")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004371643, 0.7588959, 0.011370182)
+shape = SubResource("BoxShape3D_bmw2d")

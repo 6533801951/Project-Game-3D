@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://o1y1gpdt2qog"]
+
+[ext_resource type="Script" uid="uid://cc4i5hshxu4x0" path="res://scripts/tutorial.gd" id="1_8ho6b"]
+[ext_resource type="Texture2D" uid="uid://crjmeqnq8vtuk" path="res://assests/howtoplay.png" id="2_ph3nu"]
+[ext_resource type="FontFile" uid="uid://m6temv8nflwe" path="res://assests/font/WDB_Bangna.ttf" id="3_ph3nu"]
+[ext_resource type="AudioStream" uid="uid://cq43cmp6tj060" path="res://assests/music/click.mp3" id="4_4kmhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kmhl"]
+bg_color = Color(0, 0, 0, 0.69411767)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 0.69411767)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ho6b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ph3nu")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+offset_right = 167.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_ph3nu")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_4kmhl")
+text = "Go Back"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4kmhl")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
