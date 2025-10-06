@@ -1,7 +1,5 @@
-# Project-Game-3D
-***Demo Game***
--https://6533801951.github.io/Project-Game-3D/
-# โครงงานเกม 2D  
+
+# โครงงานเกม 3D  
 วิชา CP352203 - Computer Game Development ภาคการศึกษาต้น ปีการศึกษา 2568  
 
 ## สมาชิกในกลุ่ม  
@@ -115,7 +113,7 @@
 
 ---
 ## Demo  
-https://6533801951.github.io/Project-Game-2D/
+https://6533801951.github.io/Project-Game-3D/
 ---
 
 ## Credits  
