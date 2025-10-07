@@ -105,6 +105,7 @@
 
 <img width="1535" height="907" alt="image" src="https://github.com/user-attachments/assets/191a7afc-e2f9-4e2b-b916-45929b263e2c" />
 
+<img width="992" height="594" alt="image" src="https://github.com/user-attachments/assets/31553e0f-2e1b-4329-975b-76de0e5ac527" />
 
 
 
@@ -112,7 +113,9 @@
 ---
 ## ส่วนประกอบตัวละคร
 
+<img width="654" height="806" alt="image" src="https://github.com/user-attachments/assets/0cfef187-f831-4ba6-a970-95ef24628d1e" />
 
+<img width="654" height="768" alt="image" src="https://github.com/user-attachments/assets/676a34a3-7690-43dc-a485-2a2cbc8070e2" />
 
 
 ---
