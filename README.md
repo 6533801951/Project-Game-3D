@@ -108,7 +108,7 @@
 
 ---
 ## Demo  
-https://6533801951.github.io/Project-Game-2D/
+https://6533801951.github.io/Project-Game-3D/
 ---
 
 ## Credits  
@@ -118,5 +118,3 @@ https://6533801951.github.io/Project-Game-2D/
 - **font** จาก https://www.f0nt.com/release/wdb-bangna/
 - **sound และ music** จาก https://pixabay.com/ 
 
-  - https://pixabay.com  
-  - https://mixkit.co  
